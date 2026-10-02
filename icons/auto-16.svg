@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <!-- Keep the original raster glyphs; Firefox selects the toolbar scheme. -->
+  <style>
+    #dark-toolbar { display: none; }
+    @media (prefers-color-scheme: dark) {
+      #light-toolbar { display: none; }
+      #dark-toolbar { display: inline; }
+    }
+  </style>
+  <image id="light-toolbar" width="16" height="16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABY0lEQVQ4y3XTvWpVURAF4O+cezAE0VjZCj5FGsHugAR/XiCkVjCg0WcQfxqxF0lplVtoGVAjPobWKYziDxeScy3uOjBezcBmNjNr71lr9uym73uxFhPM42fYRINXWMEQ7Mm47xJoEhgBx9jIQfiKqb+twbxL5QFXcQ3fcR47BbyHpzjCGt5iH20XukMOP3C61QvbXDDpolkqw2+cic7nyW9H7gyrBTsfGRyHdm3mp8JoHVeSU7CTNrduFIojaBcXs3aXcvdxHbOm7/vN0u2hgM7hUdjs4Md/MFttnkNJwoccOMB7/MS7JQy0barfWOr46/gv+LwUG+0mXrYWEzbFk3T6V7p/JwwOcBcvwqTDs8zGSlcoHcUf4h5ul2rjMx7ibMEOXQFdiL+UClXv5RKrWJ3FwLAYzxbfUuVh6fYcjyNhDW8SPxklNBajuV+qfIxOuFX2ozVVwty/33mKrcT3nPKd/wDtDl+v16ZvsQAAAABJRU5ErkJggg=="/>
+  <image id="dark-toolbar" width="16" height="16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABYklEQVQ4y3XTvWpVURAF4O+cezAE0VjZCj5FGsFagj8vEFIrKMToM4g/jdiLpLTKLbQMqPH4GFqnMIo/XEjOtbjrwHg1A5vZzKy9Z63Zs5u+78VaTDCPn2ETDV5hBUOwJ+O+S6BJYAQcYyMH4Sum/rYG8y6VB1zFNXzHeewU8B6e4ghreIt9tF3oDjn8wOlWL2xzwaSLZqkMv3EmOp8nfy9yZ1gt2PnI4Di0azM/FUbruJKcgp20uXWjUBxBu7iYtbuUu4/rmDV932+Wbg8FdA6PwmYHP/6D2WrzHEoSPuTAAd7jJ94tYaBtU/3GUsdfx3/B56XYaDfxsrWYsCmepNO/0v07YXCAu3gRJh2eZTZWukLpKP4Q27hdqo3PeIizBTt0BXQh/lIqVL2XS6xidRYDw2I8W3xLlYel23M8joQ1vEn8ZJTQWIzmfqnyMTrhVtmP1lQJc/9+5ym2Et9zynf+A20kYq/zTxSfAAAAAElFTkSuQmCC"/>
+</svg>
