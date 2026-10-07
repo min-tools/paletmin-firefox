@@ -13,15 +13,17 @@ The extension makes no network requests. It cannot read rules inside cross-origi
 ## What is stored
 
 - Each tab's mode is kept in Firefox's extension session storage. It is removed when the tab closes or Firefox quits.
-- Firefox's website appearance scheme is kept in extension local storage so the first click selects the opposite scheme, even before a page reports its preference after a restart.
+- Each tab's readiness state is kept in session storage: ready, reload required, or unavailable. It contains no page content or URL and is removed when the tab closes or Firefox quits.
+- The last reported Firefox website appearance scheme is cached in extension local storage. Toolbar clicks read the current tab's native scheme directly.
+- A session flag records whether open tabs have been initialized. It prevents repeated setup when the background script wakes and is cleared when the extension is disabled or Firefox quits.
 
 No page content, URLs, or browsing history are stored.
 
 ## Permissions
 
 - **Access your data for all websites**: lets the scripts run in each tab and frame.
-- **scripting**: adds the scripts to tabs that are already open after installation or an update.
-- **storage**: used for the two items listed above.
+- **scripting**: checks whether a tab's page controller is ready, applies the selected mode, and reconnects the relay after an extension update or re-enabling. Pages without a document-start controller stay disabled until reloaded.
+- **storage**: used for the items listed above.
 
 The manifest declares that no data is collected or transmitted outside the extension.
 

@@ -8,12 +8,19 @@
 (() => {
   const CONTENT_RESET = 'palette-toggle:content-reset';
   const CONTROLLER = Symbol.for('tools.min.paletmin.palette-toggle');
+  const READY = Symbol.for('tools.min.paletmin.document-ready');
+
+  // Firefox can inject manifest scripts into existing pages on installation.
+  // Only prepare a document before the parser has added any root children;
+  // otherwise the site's private media-query listeners may already exist.
+  if (document.readyState !== 'loading' || document.documentElement?.firstChild) return;
 
   // Retire the previous content script, including one attached to an earlier
   // document in a reused window. Keep the page controller and its query lists.
   window.dispatchEvent(new Event(CONTENT_RESET));
   if (window[CONTROLLER]) {
     window[CONTROLLER]('auto');
+    document[READY] = true;
     return;
   }
 
@@ -277,4 +284,7 @@
     enumerable: false,
     writable: false,
   });
+  // Only manifest injection at document_start marks a document ready. Keep
+  // this on the document, since a window can outlive its initial about:blank.
+  document[READY] = true;
 })();

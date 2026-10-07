@@ -1,8 +1,11 @@
-// Relays this frame's mode to the persistent controller in page.js.
+// Restores this frame's saved mode through the controller in page.js.
 // Runs in Firefox's isolated world, so matchMedia() here still reports the
 // native page scheme. No page data crosses the extension message channel.
 (() => {
   const RESET = 'palette-toggle:content-reset';
+  // A navigation can overlap programmatic injection. Keep only one relay in
+  // this window even if both the manifest and background load this script.
+  window.dispatchEvent(new Event(RESET));
   let active = true;
 
   // system()
@@ -25,11 +28,15 @@
     }
   };
 
-  // Apply modes sent after a toolbar click or keyboard shortcut.
+  // Report the native scheme. The background checks the page controller
+  // separately and calls it directly for toolbar clicks and shortcuts.
   const onMessage = (message, sender, respond) => {
-    if (sender.id !== browser.runtime.id || message.type !== 'set') return;
-    setMode(message.mode);
-    respond(true);
+    if (!active || sender.id !== browser.runtime.id) return;
+    // Let the background reuse this relay without resetting the page's mode.
+    if (message.type === 'probe') {
+      respond({ scheme: system() });
+      return;
+    }
   };
 
   // retire()

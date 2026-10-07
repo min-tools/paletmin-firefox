@@ -22,7 +22,7 @@ def main():
                     if path.is_file() and path.suffix in {".png", ".svg"})
     referenced = [*manifest["background"]["scripts"],
                   *manifest["icons"].values(), *manifest["action"]["default_icon"].values()]
-    referenced += [f"icons/{mode}-{size}.svg" for mode in ("auto", "dark", "light")
+    referenced += [f"icons/{mode}-{size}.svg" for mode in ("auto", "dark", "light", "unavailable")
                    for size in (16, 32)]
     for script in manifest["content_scripts"]:
         referenced += script["js"]

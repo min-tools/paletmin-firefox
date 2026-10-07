@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Paletmin Palette Toggle",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Switch the current tab between Auto, Dark, and Light modes.",
   "homepage_url": "https://github.com/min-tools/paletmin-firefox",
   "browser_specific_settings": {
@@ -37,10 +37,10 @@
   ],
   "action": {
     "default_area": "navbar",
-    "default_title": "Auto palette",
+    "default_title": "Palette switching is unavailable on this page",
     "default_icon": {
-      "16": "icons/auto-16.svg",
-      "32": "icons/auto-32.svg"
+      "16": "icons/unavailable-16.svg",
+      "32": "icons/unavailable-32.svg"
     }
   },
   "icons": {
